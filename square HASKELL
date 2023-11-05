@@ -1,0 +1,11 @@
+square :: Int -> Int
+square x = x * x
+
+squareList :: [Int] -> [Int]
+squareList xs = map square xs
+
+main :: IO ()
+main = do
+  let myList = [1, 2, 3, 4, 5]
+  let squaredList = squareList myList
+  print squaredList
