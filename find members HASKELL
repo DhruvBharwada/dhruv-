@@ -1,0 +1,11 @@
+printListMembers :: [Int] -> IO ()
+printListMembers [] = return ()  -- Base case: an empty list, do nothing
+printListMembers (x:xs) = do
+  print x  -- Print the current element
+  printListMembers xs  -- Recursively print the rest of the list
+
+main :: IO ()
+main = do
+  let myList = [1, 2, 3, 4, 5]
+  putStrLn "The members of the list are:"
+  printListMembers myList
