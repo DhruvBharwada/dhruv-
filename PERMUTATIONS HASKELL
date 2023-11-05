@@ -1,0 +1,21 @@
+-- Calculate the factorial of a number
+factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+-- Calculate n permutations r (NPR)
+nPr :: Integer -> Integer -> Integer
+nPr n r = factorial n `div` factorial (n - r)
+
+main :: IO ()
+main = do
+  putStrLn "Enter the value of n:"
+  nStr <- getLine
+  let n = read nStr :: Integer
+
+  putStrLn "Enter the value of r:"
+  rStr <- getLine
+  let r = read rStr :: Integer
+
+  let result = nPr n r
+  putStrLn $ "P(" ++ show n ++ ", " ++ show r ++ ") = " ++ show result
