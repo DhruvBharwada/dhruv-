@@ -1,0 +1,17 @@
+fibonacci :: Int -> [Int]
+fibonacci 0 = [0]
+fibonacci 1 = [0, 1]
+fibonacci n = fibonacci (n - 1) ++ [lastTwoSum]
+  where
+    series = fibonacci (n - 1)
+    lastTwoSum = last series + last (init series)
+
+main :: IO ()
+main = do
+  putStrLn "Enter the number of terms for the Fibonacci series:"
+  nStr <- getLine
+  let n = read nStr :: Int
+
+  let fibSeries = take n (fibonacci n)
+  putStrLn "Fibonacci Series:"
+  mapM_ print fibSeries
