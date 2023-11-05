@@ -1,0 +1,5 @@
+main :: IO ()
+main = do
+  let myList = [1, 2, 3, 4, 5]
+  let listLength = length myList
+  putStrLn $ "The length of the list is: " ++ show listLength
