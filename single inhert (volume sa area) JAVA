@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+// Base class for shapes
+class Shape {
+    // Common methods for all shapes
+    public double area() {
+        return 0.0;
+    }
+
+    public double volume() {
+        return 0.0;
+    }
+
+    public double surfaceArea() {
+        return 0.0;
+    }
+}
+
+// Derived class for a cube
+class Cube extends Shape {
+    private double side;
+
+    public Cube(double side) {
+        this.side = side;
+    }
+
+    @Override
+    public double area() {
+        return 6 * side * side;
+    }
+
+    @Override
+    public double volume() {
+        return side * side * side;
+    }
+
+    @Override
+    public double surfaceArea() {
+        return 6 * side * side;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Enter the side length of the cube: ");
+        double side = sc.nextDouble();
+        
+        Cube cube = new Cube(side);
+
+        System.out.println("Cube Area: " + cube.area());
+        System.out.println("Cube Volume: " + cube.volume());
+        System.out.println("Cube Surface Area: " + cube.surfaceArea());
+        
+        sc.close();
+    }
+}
