@@ -1,0 +1,31 @@
+calculateValue :: Double -> Double -> Double -> String -> Double
+calculateValue principal rate time "Total Amount" =
+    principal * (1 + rate) ** time
+calculateValue principal rate _ "Principal Amount" =
+    principal
+calculateValue _ rate time "Time" =
+    time
+calculateValue total _ _ "Compound Interest" =
+    total - principal
+calculateValue _ _ _ _ = error "Invalid input"
+
+main :: IO ()
+main = do
+  putStrLn "Enter the known value (Total Amount, Principal Amount, Time, or Compound Interest):"
+  knownValueStr <- getLine
+  let knownValue = read knownValueStr :: Double
+
+  putStrLn "Enter the other two values among Principal Amount, Rate, and Time separated by spaces:"
+  inputStr <- getLine
+  let [value1, value2] = map read $ words inputStr :: [Double]
+
+  putStrLn "Enter the desired output value (Total Amount, Principal Amount, Time, or Compound Interest):"
+  outputType <- getLine
+
+  let principal = calculateValue knownValue value1 value2 "Principal Amount"
+  let rate = calculateValue knownValue value1 value2 "Rate"
+  let time = calculateValue knownValue value1 value2 "Time"
+  let compoundInterest = calculateValue knownValue value1 value2 "Compound Interest"
+
+  let result = calculateValue principal rate time outputType
+  putStrLn $ outputType ++ ": " ++ show result
