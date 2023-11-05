@@ -1,0 +1,13 @@
+factorial :: Integer -> Integer
+factorial 0 = 1
+factorial n = n * factorial (n - 1)
+
+main :: IO ()
+main = do
+  putStrLn "Enter a non-negative integer:"
+  inputStr <- getLine
+  let n = read inputStr :: Integer
+
+  if n < 0
+    then putStrLn "Factorial is not defined for negative numbers."
+    else putStrLn $ "The factorial of " ++ show n ++ " is: " ++ show (factorial n)
