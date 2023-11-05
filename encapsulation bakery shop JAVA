@@ -1,0 +1,38 @@
+#include <iostream>
+
+class Adder {
+public:
+    // Constructor to initialize total earnings
+    Adder() {
+        Total = 0;
+    }
+
+    // Function to add the price of a cake to total earnings
+    void Add(int price) {
+        Total += price;
+    }
+
+    // Function to get the total earnings
+    int getTotalEarning() {
+        return Total;
+    }
+
+private:
+    int Total;
+};
+
+int main() {
+    // Create an instance of the Adder class
+    Adder bakery;
+
+    // Add earnings for three types of cakes
+    bakery.Add(50);  // Cake 1
+    bakery.Add(30);  // Cake 2
+    bakery.Add(40);  // Cake 3
+
+    // Get and display the total earnings
+    int totalEarnings = bakery.getTotalEarning();
+    std::cout << "Total earnings: " << totalEarnings << std::endl;
+
+    return 0;
+}
