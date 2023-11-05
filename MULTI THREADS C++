@@ -1,0 +1,33 @@
+#include <iostream>
+#include <thread>
+
+class ThreadOne {
+public:
+    void operator()() {
+        for (char i = 'A'; i <= 'Z'; i++) {
+            std::cout << i << std::endl;
+        }
+    }
+};
+
+class ThreadTwo {
+public:
+    void operator()() {
+        for (int i = 1; i <= 26; i++) {
+            std::cout << i << std::endl;
+        }
+    }
+};
+
+int main() {
+    ThreadOne th1;
+    ThreadTwo th2;
+
+    std::thread t1(th1);
+    std::thread t2(th2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+}
