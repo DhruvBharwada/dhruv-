@@ -1,0 +1,31 @@
+calculateProfitLoss :: Double -> Double -> Double -> Double
+calculateProfitLoss costPrice sellingPrice percentageChange = 
+    costPrice * percentageChange / 100
+
+main :: IO ()
+main = do
+  putStrLn "Enter the Cost Price:"
+  costPriceStr <- getLine
+  let costPrice = read costPriceStr :: Double
+
+  putStrLn "Enter the Selling Price:"
+  sellingPriceStr <- getLine
+  let sellingPrice = read sellingPriceStr :: Double
+
+  putStrLn "Enter the Percentage Change (positive for profit, negative for loss):"
+  percentageChangeStr <- getLine
+  let percentageChange = read percentageChangeStr :: Double
+
+  let profitLoss = calculateProfitLoss costPrice sellingPrice percentageChange
+
+  putStrLn $ "Profit/Loss: " ++ show profitLoss
+
+  let resultSP = if percentageChange >= 0
+                  then sellingPrice
+                  else costPrice + profitLoss
+  putStrLn $ "Selling Price: " ++ show resultSP
+
+  let resultCP = if percentageChange >= 0
+                  then costPrice - profitLoss
+                  else costPrice
+  putStrLn $ "Cost Price: " ++ show resultCP
