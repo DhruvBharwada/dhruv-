@@ -1,0 +1,14 @@
+import Data.List
+
+-- Named function for square root
+squareRoot :: Double -> Double
+squareRoot x = sqrt x
+
+squareRootList :: [Double] -> [Double]
+squareRootList xs = map squareRoot xs
+
+main :: IO ()
+main = do
+  let myList = [1.0, 4.0, 9.0, 16.0, 25.0]
+  let squaredRootList = squareRootList myList
+  print squaredRootList
